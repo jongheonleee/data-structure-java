@@ -28,8 +28,7 @@ import org.junit.jupiter.api.Test;
  * - 3. 조회 : int lastIndexOf(Object obj) : 완료
  * - 4.     : Object getFirst() : 완료
  * - 5.     : Object getLast() : 완료
- * - 6. 삭제 : boolean remove(Object obj) :
- * - 7.     : boolean removeAll(Collection c) :
+ * - 6. 삭제 : boolean remove(Object obj) : 완료
  *
  */
 class MyListTest {
@@ -666,4 +665,95 @@ class MyListTest {
         }
         assertTrue(ll.size() == ml.size());
     }
+
+    @Test
+    @DisplayName("boolean remove(Object obj) - 0. null을 삭제하려는 경우")
+    void test50() {
+        boolean result1 = ll.remove(null);
+        boolean result2 = ml.remove(null);
+        assertTrue(result1 == result2);
+    }
+
+    @Test
+    @DisplayName("boolean remove(Object obj) - 1. 존재하지 않는 객체를 삭제하려는 경우")
+    void test51() {
+        for (int i=0; i<10; i++) {
+            ll.add(i);
+            ml.add(i);
+        }
+        Object obj = "None";
+        boolean result1 = ll.remove(obj);
+        boolean result2 = ml.remove(obj);
+        assertTrue(result1 == result2);
+
+    }
+
+    @Test
+    @DisplayName("boolean remove(Object obj) - 2. 리스트가 비어있을 때 삭제하려는 경우")
+    void test52() {
+        Object obj = "None";
+        boolean result1 = ll.remove(obj);
+        boolean result2 = ml.remove(obj);
+        assertTrue(result1 == result2);
+
+    }
+    @Test
+    @DisplayName("boolean remove(Object obj) - 3. 리스트 사이즈가 10이고 1번째 위치에 객체를 삭제하려는 경우")
+    void test53() {
+        for (int i=0; i<10; i++) {
+            ll.add(i);
+            ml.add(i);
+        }
+
+        Object obj = 0;
+        boolean result1 = ll.remove(obj);
+        boolean result2 = ml.remove(obj);
+        Object o1 = ll.get(0);
+        Object o2 = ml.get(0);
+
+        assertTrue(result1 == result2);
+        assertTrue(ll.size() == ml.size());
+        assertTrue(o1.equals(o2));
+    }
+    @Test
+    @DisplayName("boolean remove(Object obj) - 4. 리스트 사이즈가 10이고 5번째 위치에 객체를 삭제하려는 경우")
+    void test54() {
+        for (int i=0; i<10; i++) {
+            ll.add(i);
+            ml.add(i);
+        }
+
+        Object obj = 4;
+        boolean result1 = ll.remove(obj);
+        boolean result2 = ml.remove(obj);
+        Object o1 = ll.get(5);
+        Object o2 = ml.get(5);
+
+        assertTrue(result1 == result2);
+        assertTrue(ll.size() == ml.size());
+        assertTrue(o1.equals(o2));
+    }
+
+    @Test
+    @DisplayName("boolean remove(Object obj) - 4. 리스트 사이즈가 10이고 마지막 위치에 객체를 삭제하려는 경우")
+    void test55() {
+        for (int i=0; i<10; i++) {
+            ll.add(i);
+            ml.add(i);
+        }
+
+        Object obj = 9;
+        boolean result1 = ll.remove(obj);
+        boolean result2 = ml.remove(obj);
+        Object o1 = ll.get(8);
+        Object o2 = ml.get(8);
+
+        assertTrue(result1 == result2);
+        assertTrue(ll.size() == ml.size());
+        assertTrue(o1.equals(o2));
+    }
+
+
+
+
 }

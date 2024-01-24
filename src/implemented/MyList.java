@@ -91,16 +91,16 @@ public class MyList {
         if (!isPositionIndex(index)) throw new IndexOutOfBoundsException();
 
         // 1. 리스트가 비어있을 때
-        // 1-1. c -> ll(사이즈 계산)
-        // 1-2 링크 수정(루트에 연결)
-        // 1-3 사이즈 업데이트
+            // 1-1. c -> ll(사이즈 계산)
+            // 1-2 링크 수정(루트에 연결)
+            // 1-3 사이즈 업데이트
 
         // 2. 리스트가 비어있지 않을 때
-        // 2-1. c -> ll(사이즈 계산)
-        // 2-2. first, last 기록
-        // 2-3. prev, next 기록
-        // 2-4. 링크 수정
-        // 2-5. 사이즈 업데이트
+            // 2-1. c -> ll(사이즈 계산)
+            // 2-2. first, last 기록
+            // 2-3. prev, next 기록
+            // 2-4. 링크 수정
+            // 2-5. 사이즈 업데이트
 
         if (root == null) {
             Iterator it = c.iterator();
@@ -218,6 +218,38 @@ public class MyList {
         curr.next = null;
 
         return removed;
+    }
+
+    public boolean remove(Object obj) {
+        boolean ok = false;
+        // 0. 리스트가 비어있음
+        if (root == null) return ok;
+
+        // 1. 찾음
+            // 1-1. root 인 경우
+            // 1-2. root 가 아닌 경우
+        // 2. 못찾음
+        Node curr = root, prev = null;
+        while (curr != null) {
+            if (curr.obj.equals(obj)) {
+                if (curr == root) {
+                    root = curr.next;
+                } else {
+                    prev.next = curr.next;
+                }
+                curr.next = null;
+                ok = true;
+            }
+
+            if (ok) {
+                size--;
+                break;
+            }
+
+            prev = curr;
+            curr = curr.next;
+        }
+        return ok;
     }
 
     public int lastIndexOf(Object obj) {
