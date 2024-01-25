@@ -21,16 +21,16 @@ class Node {
 }
 
 
-public class MyList {
+public class MyLinkedList {
     public Node root;
     public int size;
 
-    public MyList() {
+    public MyLinkedList() {
         root = null;
         size = 0;
     }
 
-    public MyList(Collection c) {
+    public MyLinkedList(Collection c) {
         Iterator it = c.iterator();
         while (it.hasNext()) {
             Object obj = it.next();

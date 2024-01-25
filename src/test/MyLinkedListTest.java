@@ -1,8 +1,9 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import implemented.MyList;
+import implemented.MyLinkedList;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -31,14 +32,14 @@ import org.junit.jupiter.api.Test;
  * - 6. 삭제 : boolean remove(Object obj) : 완료
  *
  */
-class MyListTest {
+class MyLinkedListTest {
 
-    MyList ml;
+    MyLinkedList ml;
     LinkedList ll;
 
     @BeforeEach
     void setUp() {
-        ml = new MyList();
+        ml = new MyLinkedList();
         ll = new LinkedList();
     }
 
@@ -62,7 +63,7 @@ class MyListTest {
         }
 
         LinkedList ll = new LinkedList(c);
-        MyList ml = new MyList(c);
+        MyLinkedList ml = new MyLinkedList(c);
         assertTrue(ll.size() == ml.size());
     }
 
